@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 
-namespace WebApi.Repositories.Config
+ namespace Repositories.EfCore.Config
 {
     public class BookConfig : IEntityTypeConfiguration<Book>
     {
