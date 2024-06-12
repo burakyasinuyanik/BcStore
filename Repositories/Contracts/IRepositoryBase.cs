@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repositories.Contracts
 {
-    internal interface IRepositoryBase<T> where T : class
+    public interface IRepositoryBase<T> where T : class
     {
         IQueryable<T> FindAll(bool trackChanges);
         IQueryable<T> FindByCondition(Expression<Func<T,bool>> expression, bool trackChanges);
