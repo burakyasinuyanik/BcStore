@@ -1,37 +1,46 @@
-﻿using Azure;
-using Entities.Models;
-using Microsoft.AspNetCore.Http;
+﻿using Entities.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Repositories.Contracts;
-using Repositories.EfCore;
+using Services.Contracts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-
-namespace WebApi.Controllers
+namespace Presentation.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/books")]
     public class BooksController : ControllerBase
     {
-        private readonly IRepositoryManager repositoryManager;
+        private readonly IServiceManager _manager;
 
-        public BooksController(IRepositoryManager repositoryManager)
+        public BooksController(IServiceManager manager)
         {
-            this.repositoryManager = repositoryManager;
+            _manager = manager;
         }
 
         [HttpGet]
         public IActionResult GetAllBooks()
         {
-            var books = repositoryManager.Book.GetAllBooks(false);
-            return Ok(books);
+            try
+            {
+                var books = _manager.BookService.GetAllBooks(false);
+                return Ok(books);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
         }
         [HttpGet("{id:int}")]
         public IActionResult GetOneBook([FromRoute(Name = "id")] int id)
         {
             try
             {
-                var book = repositoryManager.Book.GetOnBookById(id, false);
+                var book = _manager.BookService.GetOneBook(id, true);
                 if (book is null)
                     return NotFound();
                 return Ok(book);
@@ -48,8 +57,8 @@ namespace WebApi.Controllers
             {
                 if (book is null)
                     return BadRequest();
-                repositoryManager.Book.Create(book);
-                repositoryManager.Save();
+                _manager.BookService.CreateOneBook(book);
+
                 return StatusCode(201, book);
             }
             catch (Exception ex)
@@ -63,15 +72,12 @@ namespace WebApi.Controllers
         {
             try
             {
-                var entity = repositoryManager.Book.GetOnBookById(id, true);
-                if (entity is null)
-                    return NotFound();
-                if (id != entity.Id)
+                if (book is null)
                     return BadRequest();
-                entity.Title = book.Title;
-                entity.Price = book.Price;
-                repositoryManager.Save();
-                return Ok(book);
+
+
+                _manager.BookService.UpdateOneBook(id, book, true);
+                return NoContent();
             }
             catch (Exception ex)
             {
@@ -83,16 +89,9 @@ namespace WebApi.Controllers
         {
             try
             {
-                var entity = repositoryManager.Book.GetOnBookById(id, false);
-                if (entity is null)
-                    return NotFound(new
-                    {
-                        statusCode = 404,
-                        message = $"Book with id:{id} could not found."
-                    });
-                repositoryManager.Book.Delete(entity);
-                repositoryManager.Save();
-                return Ok(entity);
+
+                _manager.BookService.DeleteOneBook(id, false);
+                return NoContent();
 
             }
             catch (Exception ex)
@@ -105,18 +104,20 @@ namespace WebApi.Controllers
         {
             try
             {
-                var entity = repositoryManager.Book.GetOnBookById(id, true);
+                var entity = _manager.BookService.GetOneBook(id, true);
                 if (entity is null)
                     return NotFound();
                 bookPatch.ApplyTo(entity);
-                repositoryManager.Book.Update(entity);
-                repositoryManager.Save();
+                _manager.BookService.UpdateOneBook(id, entity, true);
+
                 return NoContent();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
 
     }
+
 }

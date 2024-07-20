@@ -24,7 +24,7 @@ namespace Repositories.EfCore
             .OrderBy(b => b.Id);
        
 
-        public Book GetOnBookById(int id, bool trackChanges)=>FindByCondition(b=>b.Equals(id), trackChanges).SingleOrDefault();
+        public Book GetOnBookById(int id, bool trackChanges)=>FindByCondition(b=>b.Id==id, trackChanges).SingleOrDefault();
        
 
         public void UpdateOneBook(Book book)=>Update(book);
