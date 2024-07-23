@@ -41,8 +41,7 @@ namespace Presentation.Controllers
             try
             {
                 var book = _manager.BookService.GetOneBook(id, true);
-                if (book is null)
-                    return NotFound();
+               
                 return Ok(book);
             }
             catch (Exception ex)

@@ -1,11 +1,14 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using NLog;
 using Repositories.EfCore;
 using WebApi.Extensions;
 
 
 var builder = WebApplication.CreateBuilder(args);
-
+//xml log kayýt satýrý
+LogManager.Setup().LoadConfigurationFromFile(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
+   
 // Add services to the container.
 
 builder.Services.AddControllers()
@@ -19,6 +22,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
+builder.Services.ConfigureLoggerService();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
