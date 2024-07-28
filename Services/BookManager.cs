@@ -44,6 +44,7 @@ namespace Services
 
         public IEnumerable<Book> GetAllBooks(bool trackChanges)
         {
+            logerService.LogWarning("Tüm kitaplar için istekte bulunuldu");
             return manager.Book.GetAllBooks(trackChanges);
         }
 
