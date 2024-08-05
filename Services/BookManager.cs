@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Entities.Exceptions;
+using Entities.Models;
 using Repositories.Contracts;
 using Services.Contracts;
 using System;
@@ -33,9 +34,7 @@ namespace Services
             var entity = manager.Book.GetOnBookById(id, trackChanges);
             if (entity is null)
             {
-                string message = $"Book with {id} could not fount";
-                logerService.LogInfo(message);
-                throw new Exception(message);
+                throw new BookNotFoundException(id);
             }
 
             manager.Book.DeleteOneBook(entity);
@@ -53,11 +52,10 @@ namespace Services
             var book = manager.Book.GetOnBookById(id, trackChanges);
             if(book is null)
             {
-                string message = $"Book with {id} could not fount";
-                logerService.LogInfo(message);
-                throw new Exception(message);
+               
+                throw new BookNotFoundException(id);
             }
-            return manager.Book.GetOnBookById(id, trackChanges);
+            return book;
         }
 
         public Book UpdateOneBook(int id, Book book, bool trackChanges)
@@ -65,9 +63,7 @@ namespace Services
             var entity = manager.Book.GetOnBookById(id, trackChanges);
             if (entity is null)
             {
-                string message = $"Book with {id} could not fount";
-                logerService.LogInfo(message);
-                throw new Exception(message);
+                throw new BookNotFoundException(id);
             }
             if (book is null)
                 throw new ArgumentException(nameof(book));
