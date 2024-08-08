@@ -23,7 +23,7 @@ builder.Services.AddControllers(config =>
     .AddCustomCsvFormatter()
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
     .AddNewtonsoftJson();
-
+//406-422 kodlarý açmak için kullanýlmaktadýr.
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 { options.SuppressModelStateInvalidFilter = true; });
 
