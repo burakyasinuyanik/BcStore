@@ -2,6 +2,7 @@
 using Entities.DataTransferObject;
 using Entities.Exceptions;
 using Entities.Models;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Repositories.Contracts;
 using Services.Contracts;
 using System;
@@ -45,10 +46,11 @@ namespace Services
             manager.Save();
         }
 
-        public IEnumerable<Book> GetAllBooks(bool trackChanges)
+        public IEnumerable<BookDto> GetAllBooks(bool trackChanges)
         {
-           
-            return manager.Book.GetAllBooks(trackChanges);
+            var books = manager.Book.GetAllBooks(trackChanges);
+          var booksDto=  _mapper.Map<IEnumerable <BookDto>>(books);
+            return booksDto;
         }
 
         public Book GetOneBook(int id, bool trackChanges)
