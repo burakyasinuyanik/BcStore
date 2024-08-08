@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using NLog;
@@ -16,12 +17,15 @@ LogManager.Setup().LoadConfigurationFromFile(String.Concat(Directory.GetCurrentD
 builder.Services.AddControllers(config =>
 {
     config.RespectBrowserAcceptHeader = true;
-    config.ReturnHttpNotAcceptable=true;
+    config.ReturnHttpNotAcceptable = true;
 })
     .AddXmlDataContractSerializerFormatters()
     .AddCustomCsvFormatter()
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
     .AddNewtonsoftJson();
+
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{ options.SuppressModelStateInvalidFilter = true; });
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

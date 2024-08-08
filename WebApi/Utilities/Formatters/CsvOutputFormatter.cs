@@ -15,7 +15,7 @@ namespace WebApi.Utilities.Formatters
         }
         protected override bool CanWriteType(Type? type)
         {
-            if (typeof(bool).IsAssignableFrom(type) || typeof(IEnumerable<BookDto>).IsAssignableFrom(type))
+            if (typeof(BookDto).IsAssignableFrom(type) || typeof(IEnumerable<BookDto>).IsAssignableFrom(type))
             {
                 return base.CanWriteType(type);
             }
