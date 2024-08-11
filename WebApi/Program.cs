@@ -19,10 +19,11 @@ builder.Services.AddControllers(config =>
     config.RespectBrowserAcceptHeader = true;
     config.ReturnHttpNotAcceptable = true;
 })
+    .AddNewtonsoftJson()
     .AddXmlDataContractSerializerFormatters()
     .AddCustomCsvFormatter()
-    .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
-    .AddNewtonsoftJson();
+    .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
+    
 //406-422 kodlarý açmak için kullanýlmaktadýr.
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 { options.SuppressModelStateInvalidFilter = true; });
