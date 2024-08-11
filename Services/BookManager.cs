@@ -2,6 +2,7 @@
 using Entities.DataTransferObject;
 using Entities.Exceptions;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Repositories.Contracts;
 using Services.Contracts;
@@ -43,11 +44,14 @@ namespace Services
            await manager.SaveAsync();
         }
 
-        public async Task<IEnumerable<BookDto>> GetAllBooksAsync(bool trackChanges)
+        public async Task<(IEnumerable<BookDto> books,MetaData metaData)> GetAllBooksAsync(BookParameters bookParameters, bool trackChanges)
         {
-            var books = await manager.Book.GetAllBooksAsync(trackChanges);
-            var booksDto=  _mapper.Map<IEnumerable <BookDto>>(books);
-            return booksDto;
+            var booksWithMetaData = await manager
+                .Book
+                .GetAllBooksAsync(bookParameters,trackChanges);
+            
+            var booksDto=  _mapper.Map<IEnumerable <BookDto>>(booksWithMetaData);
+            return (booksDto, booksWithMetaData.MetaData);
         }
 
         public async Task<BookDto> GetOneBookAsync(int id, bool trackChanges)
