@@ -37,11 +37,7 @@ namespace Services
 
         public async Task DeleteOneBookAsync(int id, bool trackChanges)
         {
-            var entity = await manager.Book.GetOnBookByIdAsync(id, trackChanges);
-            if (entity is null)
-            {
-                throw new BookNotFoundException(id);
-            }
+            var entity = await GetOneBookByIdCheckExists(id, trackChanges);
 
             manager.Book.DeleteOneBook(entity);
            await manager.SaveAsync();
@@ -56,23 +52,17 @@ namespace Services
 
         public async Task<BookDto> GetOneBookAsync(int id, bool trackChanges)
         {
-            var book = await manager.Book.GetOnBookByIdAsync(id, trackChanges);
-            if(book is null)
-            {
-               
-                throw new BookNotFoundException(id);
-            }
+            var entity = await GetOneBookByIdCheckExists(id, trackChanges);
 
-            return _mapper.Map<BookDto>(book);
+
+            return _mapper.Map<BookDto>(entity);
         }
 
         public async Task<(BookDtoForUpdate bookDtoForUpdate, Book book)> GetOneBookForPatchAsync(int id, bool trackChanges)
         {
-            var book = await manager.Book.GetOnBookByIdAsync(id,trackChanges);
-            if (book is null)
-                throw new BookNotFoundException(id);
-            var bookDtoForUpdate=_mapper.Map<BookDtoForUpdate>(book);
-            return (bookDtoForUpdate, book);
+            var entity = await GetOneBookByIdCheckExists(id, trackChanges);
+            var bookDtoForUpdate=_mapper.Map<BookDtoForUpdate>(entity);
+            return (bookDtoForUpdate, entity);
         }
 
         public async Task SaveChangesForPatchAsync(BookDtoForUpdate bookDtoForUpdate, Book book)
@@ -91,6 +81,13 @@ namespace Services
 
             manager.Book.Update(entity);
             await manager.SaveAsync();
+            return entity;
+        }
+        private async Task<Book> GetOneBookByIdCheckExists(int id,bool trackChanges)
+        {
+            var entity = await manager.Book.GetOnBookByIdAsync(id, trackChanges);
+            if(entity is null)
+                throw new BookNotFoundException(id);
             return entity;
         }
     }

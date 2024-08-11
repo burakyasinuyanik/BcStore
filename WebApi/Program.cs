@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using NLog;
+using Presentation.ActionFilters;
 using Repositories.EfCore;
 using Services.Contracts;
 using WebApi.Extensions;
@@ -23,7 +24,10 @@ builder.Services.AddControllers(config =>
     .AddXmlDataContractSerializerFormatters()
     .AddCustomCsvFormatter()
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
-    
+
+//builder.Services.AddScoped<ValidationFilterAttribute>();// ýoc her kiþi için özel oluþturma
+
+
 //406-422 kodlarý açmak için kullanýlmaktadýr.
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 { options.SuppressModelStateInvalidFilter = true; });
@@ -35,6 +39,7 @@ builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerService();
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.ConfigureActionFilter();
 
 
 var app = builder.Build();

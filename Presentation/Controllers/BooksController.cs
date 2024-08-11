@@ -3,6 +3,7 @@ using Entities.Exceptions;
 using Entities.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.ActionFilters;
 using Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ using System.Threading.Tasks;
 
 namespace Presentation.Controllers
 {
+    [ServiceFilter(typeof(LogFilterAttribute))]
+
     [ApiController]
     [Route("api/books")]
     public class BooksController : ControllerBase
@@ -45,12 +48,10 @@ namespace Presentation.Controllers
 
         }
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateOneBook([FromBody] BookDtoForInsertion bookDto)
         {
-            if (bookDto is null)
-                return BadRequest();
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState);
+         
            await _manager.BookService.CreateOneBookAsync(bookDto);
 
             return StatusCode(201, bookDto);
@@ -58,18 +59,12 @@ namespace Presentation.Controllers
 
 
         }
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] BookDtoForUpdate book)
-        {
-
-            if (book is null)
-                return BadRequest();
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState);
+        {      
            await _manager.BookService.UpdateOneBookAsync(id, book, false);
             return NoContent();
-
-
         }
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteOneBook([FromRoute(Name = "id")] int id)

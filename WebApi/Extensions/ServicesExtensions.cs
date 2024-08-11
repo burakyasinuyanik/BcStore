@@ -1,5 +1,7 @@
 ﻿
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
+using Presentation.ActionFilters;
 using Repositories.Contracts;
 using Repositories.EfCore;
 using Services;
@@ -19,5 +21,9 @@ namespace WebApi.Extensions
         public static void ConfigureRepositoryManager(this IServiceCollection services)=>services.AddScoped<IRepositoryManager,RepositoryManager>();
 
         public static void ConfigureLoggerService(this IServiceCollection services)=>services.AddSingleton<ILogerService,LoggerManager>();
+        public static void ConfigureActionFilter(this IServiceCollection services){
+            services.AddScoped<ValidationFilterAttribute>();
+            services.AddSingleton<LogFilterAttribute>();
+        }
     }
 }
