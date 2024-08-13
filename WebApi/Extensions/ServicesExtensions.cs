@@ -1,4 +1,6 @@
 ﻿
+using Entities.DataTransferObject;
+using Entities.Models;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 using Presentation.ActionFilters;
@@ -37,6 +39,9 @@ namespace WebApi.Extensions
                     .WithHeaders("X-Pagination");
                 });
             });
+        }
+        public static void ConfigureDataShaper(this IServiceCollection services) {
+            services.AddScoped<IDataShaper<BookDto>, DataShaper<BookDto>>();
         }
     }
 }
