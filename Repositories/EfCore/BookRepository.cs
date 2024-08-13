@@ -2,6 +2,7 @@
 using Entities.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Contracts;
+using Repositories.EfCore.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace Repositories.EfCore
         public async Task<PagedList<Book>> GetAllBooksAsync(BookParameters bookParamaters, bool trackChanges) {
            var books= await FindAll(trackChanges)
             .FilterBooks(bookParamaters.MinPrice,bookParamaters.MaxPrice)
+            .Search(bookParamaters.SearchTerm)
             .OrderBy(b => b.Id)      
             .ToListAsync();
 
