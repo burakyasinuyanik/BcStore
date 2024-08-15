@@ -18,7 +18,7 @@ namespace Repositories.EfCore.Extensions
             if (string.IsNullOrWhiteSpace(searchTerm))
                 return books;
             var lowerCaseTerm=searchTerm.Trim().ToLower();
-            return books.Where(b=>b.Title.ToLower().Contains(searchTerm));
+            return books.Where(b=>b.Title.ToLower().Contains(lowerCaseTerm));
         }
         public static IQueryable<Book> Sort(this IQueryable<Book>books, string sortTerm)
         {
