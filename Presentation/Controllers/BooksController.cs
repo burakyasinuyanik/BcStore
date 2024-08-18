@@ -29,13 +29,21 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
+        [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         public async Task<IActionResult> GetAllBooks([FromQuery]BookParameters bookParameters)
         {
+            var linkParameters = new LinkParameters()
+            {
+                bookParameters = bookParameters,
+                httpContext = HttpContext
+            };
 
+            var result = await _manager.BookService.GetAllBooksAsync(linkParameters,false);
+            Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(result.metaData));
 
-            var pagedResult = await _manager.BookService.GetAllBooksAsync(bookParameters,false);
-            Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(pagedResult.metaData));
-            return Ok(pagedResult.books);
+            return result.linkResponse.HasLink ?
+                Ok(result.linkResponse.LinkedEntities) :
+                Ok(result.linkResponse.ShapedEntity);
 
 
 
