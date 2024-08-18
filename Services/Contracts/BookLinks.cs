@@ -43,15 +43,40 @@ namespace Services.Contracts
                 shapedBooks[index].Add("Links", bookLinks);
             }
             var bookCollection = new LinkCollectionWrapper<Entity>(shapedBooks);
+            CreateForBooks(httpContext, bookCollection);
             return new LinkResponse { HasLink = true,LinkedEntities= bookCollection };
         }
 
+        private LinkCollectionWrapper<Entity> CreateForBooks(HttpContext httpContext,LinkCollectionWrapper<Entity> bookCollectionWrapper)
+        {
+            bookCollectionWrapper.Links.Add(new Link()
+            {
+                Href = $"/api/{httpContext.GetRouteData().Values["controller"].ToString().ToLower()}",             
+                Rel = "self",
+                Method = "GET"
+
+            });
+            return bookCollectionWrapper;
+
+        }
         private List<Link> CreateForBook(HttpContext httpContext, BookDto bookDto, string fields)
         {
             var links = new List<Link>
          {
-             new Link("a1","a2","a3"),
-             new Link("b1","b2","b3"),
+             new Link()
+             {
+                 Href=$"/api/{httpContext.GetRouteData().Values["controller"].ToString().ToLower()}"
+                 +$"/{bookDto.Id}",
+                 Rel="self",
+                 Method="GET"
+             },
+             new Link()
+             {
+                 Href=$"/api/{httpContext.GetRouteData().Values["controller"].ToString().ToLower()}"
+                 ,
+                 Rel="create",
+                 Method="POST"
+             },
 
          };
             return links;
