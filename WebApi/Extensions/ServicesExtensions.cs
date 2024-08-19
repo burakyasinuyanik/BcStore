@@ -1,6 +1,7 @@
 ﻿
 using Entities.DataTransferObject;
 using Entities.Models;
+using Marvin.Cache.Headers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Formatters;
@@ -93,6 +94,26 @@ namespace WebApi.Extensions
                     .HasDeprecatedApiVersion(new ApiVersion(2, 0));
 
                 });
+        }
+        public static void ConfigureResponseCaching(this IServiceCollection services)
+        {
+            services.AddResponseCaching();
+        }
+        public static void ConfigureHttpCacheHeaders(this IServiceCollection services)
+        {
+            services.AddHttpCacheHeaders(expireOptions =>
+            {
+                expireOptions.MaxAge = 70;
+                expireOptions.CacheLocation = CacheLocation.Private;
+            },
+
+            validationOpt =>
+            {
+                validationOpt.MustRevalidate= false;
+            }
+
+
+            ); 
         }
     }
 }
