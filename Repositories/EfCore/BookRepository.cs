@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Entities.DataTransferObject;
+using Entities.Models;
 using Entities.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Contracts;
@@ -31,9 +32,15 @@ namespace Repositories.EfCore
             .ToListAsync();
 
             return PagedList<Book>.ToPagedList(books,bookParamaters.PageNumber,bookParamaters.PageSize);
-        } 
-       
+        }
 
+        public async Task<List<Book>> GetAllBooksAsync(bool v)
+        {
+            return await FindAll(v)
+                .OrderBy(b => b.Id)
+                .ToListAsync();
+        }
+        
         public async Task<Book> GetOnBookByIdAsync(int id, bool trackChanges)=>await FindByCondition(b=>b.Id==id, trackChanges).SingleOrDefaultAsync();
        
 

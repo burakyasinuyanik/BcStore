@@ -278,3 +278,33 @@
 2024-08-19 21:19:15.6998 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
 2024-08-19 21:19:15.7210 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
 2024-08-19 21:19:15.7505 Info Configuration initialized.
+2024-08-19 21:55:45.5807 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-08-19 21:55:45.6373 Info Registered target NLog.Targets.MailTarget(Name=gmail)
+2024-08-19 21:55:45.6664 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-08-19 21:55:45.6912 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
+2024-08-19 21:55:45.7404 Info Configuration initialized.
+2024-08-19 22:00:08.3476 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-08-19 22:00:08.4174 Info Registered target NLog.Targets.MailTarget(Name=gmail)
+2024-08-19 22:00:08.4758 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-08-19 22:00:08.5132 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
+2024-08-19 22:00:08.5441 Info Configuration initialized.
+2024-08-19 22:21:28.8942 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-08-19 22:21:28.9527 Info Registered target NLog.Targets.MailTarget(Name=gmail)
+2024-08-19 22:21:28.9797 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-08-19 22:21:29.0027 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
+2024-08-19 22:21:29.0436 Info Configuration initialized.
+2024-08-19 22:25:38.0536 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-08-19 22:25:38.1425 Info Registered target NLog.Targets.MailTarget(Name=gmail)
+2024-08-19 22:25:38.1688 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-08-19 22:25:38.1889 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
+2024-08-19 22:25:38.2187 Info Configuration initialized.
+2024-08-19 22:27:40.7124 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-08-19 22:27:40.7815 Info Registered target NLog.Targets.MailTarget(Name=gmail)
+2024-08-19 22:27:40.8148 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-08-19 22:27:40.8439 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
+2024-08-19 22:27:40.8805 Info Configuration initialized.
+2024-08-19 22:36:56.0994 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-08-19 22:36:56.1486 Info Registered target NLog.Targets.MailTarget(Name=gmail)
+2024-08-19 22:36:56.1712 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-08-19 22:36:56.1898 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
+2024-08-19 22:36:56.2453 Info Configuration initialized.
