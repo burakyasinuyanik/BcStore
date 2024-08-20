@@ -1,4 +1,5 @@
 ﻿
+using AspNetCoreRateLimit;
 using Entities.DataTransferObject;
 using Entities.Models;
 using Marvin.Cache.Headers;
@@ -114,6 +115,29 @@ namespace WebApi.Extensions
 
 
             ); 
+        }
+        public static void ConfigureRateLimitingOptions(this IServiceCollection services)
+        {
+            var rateLimitRules = new List<RateLimitRule>()
+            {
+                new RateLimitRule()
+                {
+                    Endpoint="*",
+                    Limit=10,
+                    Period="1m"
+                }
+            };
+
+            services.Configure<IpRateLimitOptions>(op =>
+            {
+                op.GeneralRules = rateLimitRules;
+            });
+
+            services.AddSingleton<IRateLimitCounterStore,MemoryCacheRateLimitCounterStore>();
+            services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+            services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+            services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+
         }
     }
 }
