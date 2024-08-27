@@ -175,7 +175,7 @@ namespace WebApi.Extensions
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = jwtSettings["bcstoreapi"],
+                    ValidIssuer = jwtSettings["validIssuer"],
                     ValidAudience= jwtSettings["validAudience"],
                     IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
                 };

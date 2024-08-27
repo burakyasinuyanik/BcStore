@@ -37,5 +37,18 @@ namespace Presentation.Controllers
             }
             return StatusCode(201);
         }
+        [HttpPost("Login")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
+
+        public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto user)
+        {
+            if (!await _service.AuthenticationService.ValidateUser(user))
+                return Unauthorized();
+            return Ok(new
+            {
+                Token = await _service.AuthenticationService.CreateToken()
+            });
+        }
     }
 }
