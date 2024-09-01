@@ -20,7 +20,7 @@ namespace Repositories.EfCore
         }
 
         public IBookRepository Book =>_bookRepository.Value;
-        public ICategoryRepository category => _categoryRepository.Value;
+        public ICategoryRepository Category => _categoryRepository.Value;
         public async Task SaveAsync()
         {
            await _context.SaveChangesAsync();

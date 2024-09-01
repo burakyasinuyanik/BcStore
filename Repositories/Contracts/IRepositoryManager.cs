@@ -9,7 +9,7 @@ namespace Repositories.Contracts
     public interface IRepositoryManager
     {
         IBookRepository Book { get; }
-        ICategoryRepository category { get; }
+        ICategoryRepository Category { get; }
         Task SaveAsync();
     }
 }

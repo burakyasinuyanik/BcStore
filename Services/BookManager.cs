@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    internal class BookManager : IBookService
+    public class BookManager : IBookService
     {
         private readonly IRepositoryManager manager;
         private readonly ILogerService logerService;
