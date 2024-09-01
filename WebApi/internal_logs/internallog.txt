@@ -488,3 +488,24 @@
 2024-09-01 16:16:28.4150 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
 2024-09-01 16:16:28.4912 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
 2024-09-01 16:16:28.5282 Info Configuration initialized.
+2024-09-01 18:09:03.4908 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-09-01 18:09:03.5243 Info Registered target NLog.Targets.MailTarget(Name=gmail)
+2024-09-01 18:09:03.5364 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-09-01 18:09:03.5499 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
+2024-09-01 18:09:03.5673 Info Configuration initialized.
+2024-09-01 18:09:05.5640 Info AppDomain Shutting down. LogFactory closing...
+2024-09-01 18:09:05.5640 Info LogFactory has been closed.
+2024-09-01 18:09:25.4608 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-09-01 18:09:25.4732 Info Registered target NLog.Targets.MailTarget(Name=gmail)
+2024-09-01 18:09:25.4987 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-09-01 18:09:25.5116 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
+2024-09-01 18:09:25.5329 Info Configuration initialized.
+2024-09-01 18:09:27.8610 Info AppDomain Shutting down. LogFactory closing...
+2024-09-01 18:09:27.8728 Info LogFactory has been closed.
+2024-09-01 18:09:48.3922 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-09-01 18:09:48.4043 Info Registered target NLog.Targets.MailTarget(Name=gmail)
+2024-09-01 18:09:48.4320 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-09-01 18:09:48.4457 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
+2024-09-01 18:09:48.4457 Info Configuration initialized.
+2024-09-01 18:09:50.4535 Info AppDomain Shutting down. LogFactory closing...
+2024-09-01 18:09:50.4718 Info LogFactory has been closed.
