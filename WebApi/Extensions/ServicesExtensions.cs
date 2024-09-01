@@ -18,6 +18,7 @@ using Services;
 using Services.Contracts;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.OpenApi.Models;
 namespace WebApi.Extensions
 {
     public static class ServicesExtensions
@@ -113,11 +114,11 @@ namespace WebApi.Extensions
 
             validationOpt =>
             {
-                validationOpt.MustRevalidate= false;
+                validationOpt.MustRevalidate = false;
             }
 
 
-            ); 
+            );
         }
         public static void ConfigureRateLimitingOptions(this IServiceCollection services)
         {
@@ -136,7 +137,7 @@ namespace WebApi.Extensions
                 op.GeneralRules = rateLimitRules;
             });
 
-            services.AddSingleton<IRateLimitCounterStore,MemoryCacheRateLimitCounterStore>();
+            services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
             services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
             services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
             services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
@@ -155,7 +156,7 @@ namespace WebApi.Extensions
 
             }).AddEntityFrameworkStores<RepositoryContext>()
             .AddDefaultTokenProviders();
-            
+
         }
         public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
         {
@@ -176,9 +177,59 @@ namespace WebApi.Extensions
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = jwtSettings["validIssuer"],
-                    ValidAudience= jwtSettings["validAudience"],
-                    IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+                    ValidAudience = jwtSettings["validAudience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
                 };
+            });
+
+        }
+
+        public static void ConfigureSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1", new OpenApiInfo {
+                    Title = "Btk Akademi", 
+                    Version = "v1",
+                    Description="Asp Api",
+                    TermsOfService= new Uri("https://www.thisrak.com.tr"),
+                    Contact=new OpenApiContact
+                    {
+                        Name="Burak",
+                        Email="burakyasin3370@gmail.com",
+                        Url=new Uri("https://www.linkedin.com/in/burakyasinuyanik/")
+                    },
+                    
+                });
+
+
+                s.SwaggerDoc("v2", new OpenApiInfo { Title = "Btk Akademi", Version = "v2" });
+
+                s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Place to add Jwt Bearer",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+                s.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference=new OpenApiReference
+                            {
+                                Type=ReferenceType.SecurityScheme,
+                                Id="Bearer"
+
+                            },
+                            Name="Bearer"
+                        },
+                        new List<string>()
+                    }
+
+                });
             });
 
         }
