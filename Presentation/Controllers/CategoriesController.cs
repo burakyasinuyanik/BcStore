@@ -32,6 +32,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("{id:int}")]
+       
         public async Task<IActionResult> GetAllCategories([FromRoute] int id)
         {
             return Ok(await serviceManager.CategoryService.GetOneCategoryByIdAsync(id, false));
