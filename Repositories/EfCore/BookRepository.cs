@@ -14,6 +14,7 @@ namespace Repositories.EfCore
 {
     public sealed class BookRepository : RepositoryBase<Book>, IBookRepository
     {
+        
         public BookRepository(RepositoryContext context) : base(context)
         {
         }
@@ -36,11 +37,19 @@ namespace Repositories.EfCore
 
         public async Task<List<Book>> GetAllBooksAsync(bool v)
         {
+            
             return await FindAll(v)
                 .OrderBy(b => b.Id)
                 .ToListAsync();
         }
-        
+
+        public async Task<IEnumerable<Book>> GetAllBooksWithDetailsAsync(bool trackChanges)
+        {
+            return await _context.Books.Include(b => b.Category)
+                  .OrderBy(b => b.Id)
+                  .ToArrayAsync();
+        }
+
         public async Task<Book> GetOnBookByIdAsync(int id, bool trackChanges)=>await FindByCondition(b=>b.Id==id, trackChanges).SingleOrDefaultAsync();
        
 

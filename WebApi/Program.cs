@@ -22,10 +22,14 @@ builder.Services.AddControllers(config =>
     config.ReturnHttpNotAcceptable = true;
     config.CacheProfiles.Add("5mins", new CacheProfile() { Duration = 300 });
 })
-   // .AddNewtonsoftJson()
     .AddXmlDataContractSerializerFormatters()
     .AddCustomCsvFormatter()
-    .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
+    .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
+   .AddNewtonsoftJson(opt =>
+   {
+       opt.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+   });
+
 
 //builder.Services.AddScoped<ValidationFilterAttribute>();// ýoc her kiþi için özel oluþturma
 

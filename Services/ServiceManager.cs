@@ -29,9 +29,11 @@ namespace Services
             IConfiguration configuration
             )
         {
-            _bookService = new Lazy<IBookService>(() => new BookManager(repositoryManager, logerService, mapper, bookLinks));
-
             _categoryService = new Lazy<ICategoryService>(() => new CategoryManager(repositoryManager));
+
+            _bookService = new Lazy<IBookService>(() => new BookManager(repositoryManager, logerService, mapper, bookLinks,_categoryService.Value));
+
+          
 
             _authenticationService = new Lazy<IAuthenticationService>(() => new AuthenticationManager(logerService, mapper, userManager, configuration));
         }
