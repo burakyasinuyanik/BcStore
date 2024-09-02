@@ -188,18 +188,19 @@ namespace WebApi.Extensions
         {
             services.AddSwaggerGen(s =>
             {
-                s.SwaggerDoc("v1", new OpenApiInfo {
-                    Title = "Btk Akademi", 
+                s.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Btk Akademi",
                     Version = "v1",
-                    Description="Asp Api",
-                    TermsOfService= new Uri("https://www.thisrak.com.tr"),
-                    Contact=new OpenApiContact
+                    Description = "Asp Api",
+                    TermsOfService = new Uri("https://www.thisrak.com.tr"),
+                    Contact = new OpenApiContact
                     {
-                        Name="Burak",
-                        Email="burakyasin3370@gmail.com",
-                        Url=new Uri("https://www.linkedin.com/in/burakyasinuyanik/")
+                        Name = "Burak",
+                        Email = "burakyasin3370@gmail.com",
+                        Url = new Uri("https://www.linkedin.com/in/burakyasinuyanik/")
                     },
-                    
+
                 });
 
 
@@ -231,6 +232,21 @@ namespace WebApi.Extensions
 
                 });
             });
+
+        }
+        public static void RegisterRepositories(this IServiceCollection services)
+        {
+
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
+
+        }
+        public static void RegisterServices(this IServiceCollection services)
+        {
+
+            services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<IBookService, BookManager>();
+            services.AddScoped<IAuthenticationService, AuthenticationManager>();
 
         }
     }

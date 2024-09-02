@@ -664,3 +664,28 @@
 2024-09-02 22:39:08.1500 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
 2024-09-02 22:39:08.1754 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
 2024-09-02 22:39:08.2101 Info Configuration initialized.
+2024-09-02 23:12:29.7346 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-09-02 23:12:29.7775 Info Registered target NLog.Targets.MailTarget(Name=gmail)
+2024-09-02 23:12:29.8054 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-09-02 23:12:29.8256 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
+2024-09-02 23:12:29.8665 Info Configuration initialized.
+2024-09-02 23:14:21.3651 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-09-02 23:14:21.4361 Info Registered target NLog.Targets.MailTarget(Name=gmail)
+2024-09-02 23:14:21.4740 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-09-02 23:14:21.5048 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
+2024-09-02 23:14:21.5373 Info Configuration initialized.
+2024-09-02 23:17:57.5750 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-09-02 23:17:57.6565 Info Registered target NLog.Targets.MailTarget(Name=gmail)
+2024-09-02 23:17:57.6846 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-09-02 23:17:57.7147 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
+2024-09-02 23:17:57.7715 Info Configuration initialized.
+2024-09-02 23:18:28.4648 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-09-02 23:18:28.5208 Info Registered target NLog.Targets.MailTarget(Name=gmail)
+2024-09-02 23:18:28.5515 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-09-02 23:18:28.5787 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
+2024-09-02 23:18:28.6189 Info Configuration initialized.
+2024-09-02 23:20:54.7799 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-09-02 23:20:54.8386 Info Registered target NLog.Targets.MailTarget(Name=gmail)
+2024-09-02 23:20:54.8809 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-09-02 23:20:54.9583 Info Validating config: TargetNames=gmail, logfile, ConfigItems=36, FilePath=C:\Users\Burak\source\repos\BcStore\WebApi\nlog.config
+2024-09-02 23:20:55.0016 Info Configuration initialized.
