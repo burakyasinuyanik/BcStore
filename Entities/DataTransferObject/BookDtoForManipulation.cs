@@ -9,7 +9,7 @@ namespace Entities.DataTransferObject
 {
     public abstract record BookDtoForManipulation
     {
-
+        //manipule etmek için kullanacağız ve herhangi bir bilginin eksik olmasında kullanıcı tarafına ileteceğimiz mesajları ileteceğiz.
         [Required(ErrorMessage ="Title is a required field.")]
         [MinLength(2,ErrorMessage ="Title must vonsist of at least 2 characters")]
         [MaxLength(50)]

@@ -8,6 +8,7 @@ namespace Entities.DataTransferObject
 {
     public record class TokenDto
     {
+        //authentication devamlılığının devamlılığı için kullanacağımız sınıf
         public string AccessToken { get; init; }
         public string RefreshToken { get; init; }
     }

@@ -9,6 +9,7 @@ namespace Entities.DataTransferObject
 {
    public record class UserForRegistrationsDto
     {
+        //kayıt işleminde istenilecek bilgiler
         public string? FirstName { get; init; }
         public string? LastName { get; init; }
         [Required(ErrorMessage ="Username is required")]

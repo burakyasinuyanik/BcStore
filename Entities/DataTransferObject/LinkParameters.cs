@@ -10,6 +10,7 @@ namespace Entities.DataTransferObject
 {
     public  record LinkParameters
     {
+        //kullanıcıdan alacağımız parametler için kullanılan sınıf
        public BookParameters bookParameters { get; init; }
         public HttpContext httpContext  { get; init; }
     }
