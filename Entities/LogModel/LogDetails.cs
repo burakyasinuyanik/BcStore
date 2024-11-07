@@ -9,6 +9,7 @@ namespace Entities.LogModel
 {
     public class LogDetails
     {
+        //log detaylarını yansıtırken kullandığımız sınıf
         public Object? Model { get; set; }
         public Object? Controller { get; set; }
         public Object? Action { get; set; }

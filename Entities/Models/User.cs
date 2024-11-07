@@ -10,6 +10,7 @@ namespace Entities.Models
 {
     public class User:IdentityUser
     {
+        //identity userkatılıldığı için onun özelliklerini taşır ve bu sayede ayrıca özellikler ekleyebiliyoruz.
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? RefreshToken { get; set; }

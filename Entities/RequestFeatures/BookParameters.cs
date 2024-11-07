@@ -8,6 +8,7 @@
         public string? SearchTerm { get; set; }
         public BookParameters()
         {
+            //default olarak id göre sıralama yapmmakta.
             OrderBy = "id";
         }
     }

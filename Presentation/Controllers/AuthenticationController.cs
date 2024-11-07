@@ -37,7 +37,7 @@ namespace Presentation.Controllers
                 return BadRequest(ModelState);
 
             }
-            return StatusCode(201);
+            return StatusCode(201);//kayıt başarılı
         }
         [HttpPost("Login")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]

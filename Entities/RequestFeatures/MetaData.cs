@@ -8,6 +8,7 @@ namespace Entities.RequestFeatures
 {
     public class MetaData
     {
+        //sayfalama işlemlerini kullanabilmek için yapmış olduğumuz işlem.
         public int CurrentPage { get; set; }
         public int TotalPage { get; set; }
         public int PageSize { get; set; }

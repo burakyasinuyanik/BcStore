@@ -22,11 +22,11 @@ namespace Presentation.ActionFilters
                 context.Result = new BadRequestObjectResult($"Object is null."+
                     $"controller:{controller}" +
                     $"action:{action}");
-                return;//400
+                return;//400 hatalı istek
             }
             if (!context.ModelState.IsValid) { 
                 context.Result= new UnprocessableEntityObjectResult(context.ModelState);
-                return;//422
+                return;//422 uymayan bir model anlamsal hata
             }
         }
     }

@@ -9,6 +9,7 @@ namespace Entities.ErrorModel
 {
     public class ErrorDetails
     {
+        //error detail sınıfı bu sınıf sayesinde detaylı bir şekilde error oluşturulur.
         public int StatusCode { get; set; }
         public string? Message { get; set; }
 

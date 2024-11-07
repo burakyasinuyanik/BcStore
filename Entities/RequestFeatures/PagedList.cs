@@ -8,6 +8,7 @@ namespace Entities.RequestFeatures
 {
     public class PagedList<T>:List<T>
     {
+        //paged list generic bir list tüm modellerimizde bu sayede sayalandırma işlemi kolay bir şekilde yapılabiliyor.
         public MetaData MetaData { get; set; }
         public PagedList(List<T> items,int count,int pageNumber,int pageSize)
         {
